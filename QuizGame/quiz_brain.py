@@ -13,6 +13,7 @@ class QuizBrain:
             print(f"Your score: {self.correct_answer}/{self.question_number}")
         else:
             print(f"Your score: {self.correct_answer}/{self.question_number}")
+        print("\n")
 
     def still_has_questions(self):
         return self.question_number < len(self.question_list)
