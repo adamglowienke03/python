@@ -1,30 +1,21 @@
 from turtle import Turtle, Screen
-import random
+import prettytable
 
-def random_color():
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    return (r, g, b)
+tim = Turtle()
+tim.shape("turtle")
+tim.color("red")
 
-def draw_square(turtle):
-    for _ in range(4):
-        turtle.forward(100)
-        turtle.right(90)
+# for _ in range(4):
+#     tim.forward(100)
+#     tim.right(90)
+#     tim.backward(100)
 
-def main():
-    screen = Screen()
-    screen.colormode(255)
+for _ in range(50):
+    tim.forward(5)
+    tim.penup()
+    tim.forward(5)
+    tim.pendown()
+    tim.right(10)
 
-    turtle = Turtle()
-    turtle.speed("fastest")
-
-    for _ in range(36):
-        turtle.color(random_color())
-        draw_square(turtle)
-        turtle.right(10)
-
-    screen.exitonclick()
-
-if __name__ == "__main__":
-    main()
+screen = Screen()
+screen.exitonclick()
