@@ -71,3 +71,23 @@ print(auto2.marka, auto2.kolor)  # Toyota czerwony
 
 ```
 `def __init__()` to specjalna metoda, która uruchamia się automatycznie w momencie tworzenia obiektu danej klasy
+
+## Pliki, katalogi, ścieżki
+
+```py
+# zapis
+with open("plik.txt", "w", encoding="utf-8") as file:
+    file.write("Hello\n")
+
+# odczyt
+with open("plik.txt", "r", encoding="utf-8") as file:
+    content = f.read()
+    print(content)
+
+# dopisanie
+with open("plik.txt", "a", encoding="utf-8") as file:
+    file.write("\nNazywam się Grzegorz")
+```
+`"w"` - zapis (nadpisuje plik)
+`"a"` - dopisywanie
+`"r"` - odczyt
