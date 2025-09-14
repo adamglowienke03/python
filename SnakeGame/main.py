@@ -76,6 +76,10 @@ def update_score():
     pen.clear()
     pen.write(f"Score: {score}, Highscore: {highscore}", align="center", font=("Courier", 16, "normal"))
 
+def save_score():
+    with open("./SnakeGame/data.txt", "w") as file:
+        file.write(f"Highscore: {highscore}")
+
 def reset_game():
     global score
     time.sleep(1)
@@ -86,6 +90,7 @@ def reset_game():
     segments.clear()
     score = 0
     update_score()
+    save_score()
 
 while True:
     screen.update()
