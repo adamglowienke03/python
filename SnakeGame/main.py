@@ -6,6 +6,7 @@ delay = 0.1
 step = 20
 
 score = 0
+highscore = 0
 
 screen = Screen()
 screen.title("Snake")
@@ -35,7 +36,7 @@ pen.color("white")
 pen.penup()
 pen.hideturtle()
 pen.goto(0, 260)
-pen.write("Score: 0", align="center", font=("Courier", 16, "normal"))
+pen.write("Score: 0, Highscore: 0", align="center", font=("Courier", 16, "normal"))
 
 def go_up():
     if head.direction != "down":
@@ -59,7 +60,6 @@ screen.onkeypress(go_down, "s")
 screen.onkeypress(go_left, "a")
 screen.onkeypress(go_right, "d")
 
-# ruch głowy
 def move():
     x = head.xcor()
     y = head.ycor()
@@ -74,8 +74,19 @@ def move():
 
 def update_score():
     pen.clear()
-    pen.write(f"Score: {score}", align="center", font=("Courier", 16, "normal"))
-    
+    pen.write(f"Score: {score}, Highscore: {highscore}", align="center", font=("Courier", 16, "normal"))
+
+def reset_game():
+    global score
+    time.sleep(1)
+    head.goto(0, 0)
+    head.direction = "stop"
+    for segment in segments:
+        segment.goto(1000, 1000)
+    segments.clear()
+    score = 0
+    update_score()
+
 while True:
     screen.update()
 
@@ -92,6 +103,8 @@ while True:
         segments.append(new_segment)
 
         score += 10
+        if score > highscore:
+            highscore = score
         update_score()
 
     for i in range(len(segments)-1, 0, -1):
@@ -108,14 +121,10 @@ while True:
 
     if abs(head.xcor()) > 290 or abs(head.ycor()) > 290:
         print("Game over!")
-        break
+        reset_game()
 
     for segment in segments:
         if head.distance(segment) < 20:
-            print("Game over!")
-            screen.bye()
-            quit()
+            reset_game()
 
     time.sleep(delay)
-
-screen.mainloop()
