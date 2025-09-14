@@ -1,4 +1,4 @@
-import turtle
+from turtle import Turtle, Screen
 import time
 import random
 
@@ -7,13 +7,13 @@ step = 20
 
 score = 0
 
-screen = turtle.Screen()
+screen = Screen()
 screen.title("Snake")
 screen.bgcolor("black")
 screen.setup(width=600, height=600)
 screen.tracer(0)
 
-head = turtle.Turtle()
+head = Turtle()
 head.shape("square")
 head.color("green")
 head.penup()
@@ -22,14 +22,14 @@ head.direction = "stop"
 
 segments = []
 
-food = turtle.Turtle()
+food = Turtle()
 food.speed(0)
 food.shape("circle")
 food.color("red")
 food.penup()
 food.goto(0, 100)
 
-pen = turtle.Turtle()
+pen = Turtle()
 pen.speed(0)
 pen.color("white")
 pen.penup()
@@ -84,7 +84,7 @@ while True:
         y = random.randint(-14, 14) * step
         food.goto(x, y)
 
-        new_segment = turtle.Turtle()
+        new_segment = Turtle()
         new_segment.speed(0)
         new_segment.shape("square")
         new_segment.color("green")
